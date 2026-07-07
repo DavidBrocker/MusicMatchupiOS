@@ -165,7 +165,7 @@ struct ContentView: View {
                         }
                     } else {
                         ZStack {
-                            GhostConstellationView()
+                            StarfieldBackgroundView()
                                 .transition(.opacity)
 
                             VStack {

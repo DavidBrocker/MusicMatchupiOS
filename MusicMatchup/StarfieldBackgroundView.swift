@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-// A faint, non-interactive starfield drawn behind the live constellation.
-// Reuses the same "randomized once, no physics" trick as the splash screen's
-// GhostConstellationView, but spreads across the full canvas rather than
-// clustering toward a center point.
+// A faint, non-interactive starfield — randomized once, no physics, no
+// timers. Shown behind both the splash/search screen and the live
+// constellation, so the background stays visually continuous across
+// that transition instead of swapping to a different decorative view.
 struct StarfieldBackgroundView: View {
     @State private var stars: [Star] = []
 
