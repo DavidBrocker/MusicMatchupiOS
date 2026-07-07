@@ -7,24 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8E104CCF2FE1976A00BCC147 /* MusicMatcupApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E104CCE2FE1976A00BCC147 /* MusicMatcupApp.swift */; };
 		8E104CDD2FE197B500BCC147 /* MusicKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E104CDC2FE197B500BCC147 /* MusicKit.framework */; };
-		8E104CE12FE19ADC00BCC147 /* ArtistNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E104CE02FE19ADC00BCC147 /* ArtistNode.swift */; };
-		8E104CE32FE19B0800BCC147 /* MusicGraphStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E104CE22FE19B0800BCC147 /* MusicGraphStore.swift */; };
-		8E104CE52FE19B3000BCC147 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E104CE42FE19B3000BCC147 /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8E104CCB2FE1976A00BCC147 /* MusicMatchup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicMatchup.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		8E104CCE2FE1976A00BCC147 /* MusicMatcupApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicMatcupApp.swift; sourceTree = "<group>"; };
 		8E104CDC2FE197B500BCC147 /* MusicKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MusicKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.0.sdk/System/Library/Frameworks/MusicKit.framework; sourceTree = DEVELOPER_DIR; };
-		8E104CE02FE19ADC00BCC147 /* ArtistNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistNode.swift; sourceTree = "<group>"; };
-		8E104CE22FE19B0800BCC147 /* MusicGraphStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicGraphStore.swift; sourceTree = "<group>"; };
-		8E104CE42FE19B3000BCC147 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		8E104CDF2FE19A4E00BCC147 /* Exceptions for "MusicMatcup" folder in "MusicMatchup" target */ = {
+		8E104CDF2FE19A4E00BCC147 /* Exceptions for "MusicMatchup" folder in "MusicMatchup" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
@@ -33,13 +25,24 @@
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
+/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+		8ED6EA662FE1AF600063A07B /* Exceptions for "MusicMatchup" folder in "Compile Sources" phase from "MusicMatchup" target */ = {
+			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
+			buildPhase = 8E104CC72FE1976A00BCC147 /* Sources */;
+			membershipExceptions = (
+				"MusicMatchup-iOS.entitlements",
+			);
+		};
+/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		8E104CCD2FE1976A00BCC147 /* MusicMatcup */ = {
+		8E104CCD2FE1976A00BCC147 /* MusicMatchup */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				8E104CDF2FE19A4E00BCC147 /* Exceptions for "MusicMatcup" folder in "MusicMatchup" target */,
+				8E104CDF2FE19A4E00BCC147 /* Exceptions for "MusicMatchup" folder in "MusicMatchup" target */,
+				8ED6EA662FE1AF600063A07B /* Exceptions for "MusicMatchup" folder in "Compile Sources" phase from "MusicMatchup" target */,
 			);
-			path = MusicMatcup;
+			path = MusicMatchup;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -57,11 +60,7 @@
 		8E104CC22FE1976A00BCC147 = {
 			isa = PBXGroup;
 			children = (
-				8E104CCE2FE1976A00BCC147 /* MusicMatcupApp.swift */,
-				8E104CE02FE19ADC00BCC147 /* ArtistNode.swift */,
-				8E104CE22FE19B0800BCC147 /* MusicGraphStore.swift */,
-				8E104CE42FE19B3000BCC147 /* ContentView.swift */,
-				8E104CCD2FE1976A00BCC147 /* MusicMatcup */,
+				8E104CCD2FE1976A00BCC147 /* MusicMatchup */,
 				8E104CDB2FE197B500BCC147 /* Frameworks */,
 				8E104CCC2FE1976A00BCC147 /* Products */,
 			);
@@ -97,7 +96,7 @@
 			buildRules = (
 			);
 			fileSystemSynchronizedGroups = (
-				8E104CCD2FE1976A00BCC147 /* MusicMatcup */,
+				8E104CCD2FE1976A00BCC147 /* MusicMatchup */,
 			);
 			name = MusicMatchup;
 			productName = MusicMatcup;
@@ -119,7 +118,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 8E104CC62FE1976A00BCC147 /* Build configuration list for PBXProject "MusicMatcup" */;
+			buildConfigurationList = 8E104CC62FE1976A00BCC147 /* Build configuration list for PBXProject "MusicMatchup" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -150,16 +149,12 @@
 		8E104CC72FE1976A00BCC147 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			files = (
-				8E104CE32FE19B0800BCC147 /* MusicGraphStore.swift in Sources */,
-				8E104CE12FE19ADC00BCC147 /* ArtistNode.swift in Sources */,
-				8E104CE52FE19B3000BCC147 /* ContentView.swift in Sources */,
-				8E104CCF2FE1976A00BCC147 /* MusicMatcupApp.swift in Sources */,
 			);
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		8E104CD62FE1976C00BCC147 /* Debug configuration for PBXProject "MusicMatcup" */ = {
+		8E104CD62FE1976C00BCC147 /* Debug configuration for PBXProject "MusicMatchup" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -192,6 +187,8 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_ENTITLEMENTS[sdk=iphoneos*]" = "MusicMatchup/MusicMatchup-iOS.entitlements";
+				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = "MusicMatchup/MusicMatchup-macOS.entitlements";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = B8HP63CLHC;
@@ -221,7 +218,7 @@
 			};
 			name = Debug;
 		};
-		8E104CD72FE1976C00BCC147 /* Release configuration for PBXProject "MusicMatcup" */ = {
+		8E104CD72FE1976C00BCC147 /* Release configuration for PBXProject "MusicMatchup" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -254,6 +251,8 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_ENTITLEMENTS[sdk=iphoneos*]" = "MusicMatchup/MusicMatchup-iOS.entitlements";
+				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = "MusicMatchup/MusicMatchup-macOS.entitlements";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = B8HP63CLHC;
@@ -280,7 +279,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				"CODE_SIGN_ENTITLEMENTS[sdk=*]" = MusicMatcup/MusicMathcup.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = B8HP63CLHC;
@@ -289,8 +289,58 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = MusicMatcup/Info.plist;
-				INFOPLIST_KEY_NSAppleMusicUsageDescription = "MusicMatchup uses Apple Music to build your personalized recommendation network.";
+				INFOPLIST_FILE = MusicMatchup/Info.plist;
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Get related artists";
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 27.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = MusicMatchupApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = auto;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				XROS_DEPLOYMENT_TARGET = 27.0;
+			};
+			name = Debug;
+		};
+		8E104CDA2FE1976C00BCC147 /* Release configuration for PBXNativeTarget "MusicMatchup" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = B8HP63CLHC;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MusicMatchup/Info.plist;
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Get related artists";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -308,62 +358,18 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = dbrock.MusicMatchup;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
-				XROS_DEPLOYMENT_TARGET = 27.0;
-			};
-			name = Debug;
-		};
-		8E104CDA2FE1976C00BCC147 /* Release configuration for PBXNativeTarget "MusicMatchup" */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = B8HP63CLHC;
-				ENABLE_APP_SANDBOX = YES;
-				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_PREVIEWS = YES;
-				ENABLE_USER_SELECTED_FILES = readonly;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = MusicMatcup/Info.plist;
-				INFOPLIST_KEY_NSAppleMusicUsageDescription = "MusicMatchup uses Apple Music to build your personalized recommendation network.";
-				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
-				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
-				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
-				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
-				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
-				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
-				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
-				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
-				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
-				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 27.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = dbrock.MusicMatcup;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				REGISTER_APP_GROUPS = YES;
-				SDKROOT = auto;
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				XROS_DEPLOYMENT_TARGET = 27.0;
 			};
 			name = Release;
@@ -371,11 +377,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8E104CC62FE1976A00BCC147 /* Build configuration list for PBXProject "MusicMatcup" */ = {
+		8E104CC62FE1976A00BCC147 /* Build configuration list for PBXProject "MusicMatchup" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8E104CD62FE1976C00BCC147 /* Debug configuration for PBXProject "MusicMatcup" */,
-				8E104CD72FE1976C00BCC147 /* Release configuration for PBXProject "MusicMatcup" */,
+				8E104CD62FE1976C00BCC147 /* Debug configuration for PBXProject "MusicMatchup" */,
+				8E104CD72FE1976C00BCC147 /* Release configuration for PBXProject "MusicMatchup" */,
 			);
 			defaultConfigurationName = Release;
 		};

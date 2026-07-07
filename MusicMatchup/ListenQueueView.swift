@@ -49,23 +49,48 @@ struct ListenQueueView: View {
                         Text(node.name)
                             .font(.subheadline.bold())
                             .lineLimit(1)
-                        Text(player.isPlaying ? "Previewing…" : "Loading preview…")
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
+
+                        if let track = player.currentTrackName {
+                            Text(track)
+                                .font(.caption)
+                                .foregroundStyle(.primary.opacity(0.85))
+                                .lineLimit(1)
+                        } else {
+                            Text("Loading preview…")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                        }
+
+                        if !player.genreNames.isEmpty {
+                            Text(player.genreNames.prefix(2).joined(separator: " · "))
+                                .font(.caption2)
+                                .foregroundStyle(.secondary)
+                                .lineLimit(1)
+                        }
                     }
 
                     Spacer()
+
+                    if player.isPlaying {
+                        Image(systemName: "waveform")
+                            .font(.caption)
+                            .foregroundStyle(Color.accentColor)
+                    }
                 }
 
                 HStack(spacing: 16) {
                     queueButton(icon: "xmark", tint: .red, label: "Discard") {
                         discard(node)
                     }
-                    queueButton(icon: "arrow.uturn.forward", tint: .secondary, label: "Skip") {
+                    queueButton(icon: "plus.circle.fill", tint: .secondary, label: "Skip") {
                         skip(node)
                     }
-                    queueButton(icon: "heart.fill", tint: .accentColor, label: "Keep") {
-                        keep(node)
+                    // "Save" — currently just clears the queue entry, same as
+                    // Skip. This is the hook point for real playlist/library
+                    // persistence later (MusicLibrary.shared), same pattern
+                    // as PreviewPlayer.toggleFollow().
+                    queueButton(icon: "heart.fill", tint: .accentColor, label: "Save") {
+                        save(node)
                     }
                 }
             }
@@ -107,10 +132,7 @@ struct ListenQueueView: View {
         }
     }
 
-    // Placeholder for now — "keep" and "skip" both just clear the queue
-    // entry today. This is the hook point for a real follow/pin action later,
-    // same pattern as PreviewPlayer.toggleFollow().
-    private func keep(_ node: GraphNode) {
+    private func save(_ node: GraphNode) {
         player.stop()
         withAnimation(.spring()) {
             sim.dequeuePendingReview(id: node.id)

@@ -7,11 +7,10 @@
 
 import SwiftUI
 
-// A very faint, non-interactive starfield drawn behind the live constellation.
+// A faint, non-interactive starfield drawn behind the live constellation.
 // Reuses the same "randomized once, no physics" trick as the splash screen's
 // GhostConstellationView, but spreads across the full canvas rather than
-// clustering toward a center point, and is dimmed further so it never
-// competes visually with the real graph in front of it.
+// clustering toward a center point.
 struct StarfieldBackgroundView: View {
     @State private var stars: [Star] = []
 
@@ -25,12 +24,17 @@ struct StarfieldBackgroundView: View {
                         width: star.size,
                         height: star.size
                     )
-                    context.fill(Path(ellipseIn: rect), with: .color(.secondary.opacity(star.opacity)))
+                    context.fill(Path(ellipseIn: rect), with: .color(.white.opacity(star.opacity)))
                 }
             }
             .onAppear {
                 if stars.isEmpty {
-                    stars = Self.bakedStars(in: geo.size)
+                    // Guard against a collapsed/zero size being reported
+                    // mid-transition — falls back to the screen bounds so
+                    // stars never end up randomized into a 0...0 range
+                    // (which would render them invisibly stacked at the origin).
+                    let effectiveSize = geo.size == .zero ? UIScreen.main.bounds.size : geo.size
+                    stars = Self.bakedStars(in: effectiveSize)
                 }
             }
         }
@@ -38,14 +42,14 @@ struct StarfieldBackgroundView: View {
     }
 
     private static func bakedStars(in size: CGSize) -> [Star] {
-        (0..<90).map { _ in
+        (0..<140).map { _ in
             Star(
                 position: CGPoint(
                     x: CGFloat.random(in: 0...size.width),
                     y: CGFloat.random(in: 0...size.height)
                 ),
-                size: CGFloat.random(in: 1.5...4),
-                opacity: Double.random(in: 0.04...0.12)
+                size: CGFloat.random(in: 1.5...3.5),
+                opacity: Double.random(in: 0.15...0.4)
             )
         }
     }

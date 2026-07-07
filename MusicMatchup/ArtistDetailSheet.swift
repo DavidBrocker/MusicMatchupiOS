@@ -1,3 +1,10 @@
+//
+//  ArtistDetailSheet.swift
+//  MusicMatchup
+//
+//  Created by David Brocker on 6/20/26.
+//
+
 import SwiftUI
 import MusicKit
 
@@ -51,7 +58,7 @@ struct ArtistDetailSheet: View {
                         player.isFollowing ? Color.secondary.opacity(0.2) : Color.accentColor,
                         in: Capsule()
                     )
-                    .foregroundStyle(player.isFollowing ? .primary : .white)
+                    .foregroundStyle(player.isFollowing ? Color.primary : Color.white)
                 }
 
                 if !player.topSongs.isEmpty {
@@ -72,11 +79,11 @@ struct ArtistDetailSheet: View {
                                 }
                             } label: {
                                 HStack(spacing: 12) {
-                                    Image(systemName: player.currentTrackName == song.title && player.isPlaying
-                                          ? "waveform"
-                                          : "play.fill")
-                                        .foregroundStyle(.accentColor)
-                                        .frame(width: 20)
+                                    let isCurrentlyPlaying = player.currentTrackName == song.title && player.isPlaying
+
+                                Image(systemName: isCurrentlyPlaying ? "waveform" : "play.fill")
+                                .foregroundStyle(Color.accentColor)
+                                .frame(width: 20)
 
                                     Text(song.title)
                                         .font(.subheadline)
