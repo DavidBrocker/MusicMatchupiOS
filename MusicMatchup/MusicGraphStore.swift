@@ -138,6 +138,7 @@ class MusicGraphStore {
     // Pass false to layer this artist's network on top of what's already loaded
     // ("Add to Constellation").
     func searchArtist(named query: String, freshStart: Bool = true) async {
+        guard !isLoading else { return }
         isLoading = true
         errorMessage = nil
         clearSuggestions()
@@ -167,6 +168,7 @@ class MusicGraphStore {
     // Search using a specific artist directly (from tapping an autocomplete
     // suggestion, or a library/curated artist)
     func selectArtist(_ artist: Artist, freshStart: Bool = true) async {
+        guard !isLoading else { return }
         isLoading = true
         errorMessage = nil
         clearSuggestions()
@@ -226,11 +228,16 @@ class MusicGraphStore {
             nodes[node.id] = node
 
             for related in detailedArtist.similarArtists ?? [] {
+                // No back-reference to the seed here: the seed's own
+                // `connections` (above) already produces that edge in
+                // ForceSimulation.load(). Adding one here too used to create
+                // a second edge in the reverse direction for every 1-hop
+                // connection, doubling spring force on those pairs.
                 let relatedNode = ArtistNode(
                     id: related.id,
                     name: related.name,
                     imageURL: related.artwork?.url(width: 200, height: 200),
-                    connections: [detailedArtist.id]
+                    connections: []
                 )
                 nodes[relatedNode.id] = relatedNode
             }
