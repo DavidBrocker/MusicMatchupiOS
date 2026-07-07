@@ -27,6 +27,11 @@ class ForceSimulation: ObservableObject {
     @Published var pendingReviewIDs: [String] = []
     var edges: [GraphEdge] = []
 
+    // id -> node, kept in sync with every `nodes` mutation below. Lets
+    // tick() and edge-drawing do O(1) lookups instead of scanning `nodes`
+    // per edge per node per frame — matters once galaxies grow large.
+    private(set) var nodesByID: [String: GraphNode] = [:]
+
     // Default weight for edges where we don't yet know both endpoints'
     // similar-artist sets. Below "seed" edges but above nothing, so
     // unconfirmed connections read as present-but-tentative.
@@ -98,7 +103,7 @@ class ForceSimulation: ObservableObject {
                 else if edge.target == node.id { otherId = edge.source }
 
                 if let otherId,
-                   let other = nodes.first(where: { $0.id == otherId }) {
+                   let other = nodesByID[otherId] {
                     let dx = other.position.x - node.position.x
                     let dy = other.position.y - node.position.y
                     let dist = max(sqrt(dx*dx + dy*dy), 1)
@@ -124,6 +129,7 @@ class ForceSimulation: ObservableObject {
     func load(from store: MusicGraphStore, center: CGPoint, append: Bool = false) {
         if !append {
             nodes = []
+            nodesByID = [:]
             edges = []
             expandedIDs = []
             similarArtistsCache = [:]
@@ -164,6 +170,7 @@ class ForceSimulation: ObservableObject {
             )
             node.isPinned = isSeed && !append
             nodes.append(node)
+            nodesByID[node.id] = node
 
             // The seed's own neighbors are the artists the person knows
             // least about — Apple picked them, not a tap the person made —
@@ -275,6 +282,7 @@ class ForceSimulation: ObservableObject {
                     )
 
                     nodes.append(newNode)
+                    nodesByID[newNode.id] = newNode
                     edges.append(GraphEdge(source: nodeID, target: relatedID, weight: weight, isConfirmed: isConfirmed))
                     // New artists go into the listen queue for triage rather
                     // than just appearing — this is what keeps the graph from
@@ -293,6 +301,7 @@ class ForceSimulation: ObservableObject {
     // `filter(id != discarded_id)` pass across every table that references it.
     func removeNode(id: String) {
         nodes.removeAll { $0.id == id }
+        nodesByID.removeValue(forKey: id)
         edges.removeAll { $0.source == id || $0.target == id }
         similarArtistsCache.removeValue(forKey: id)
         expandedIDs.remove(id)

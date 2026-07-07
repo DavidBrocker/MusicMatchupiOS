@@ -30,8 +30,8 @@ struct GraphCanvasView: View {
                     Canvas { context, size in
                         for edge in sim.edges {
                             guard
-                                let a = sim.nodes.first(where: { $0.id == edge.source }),
-                                let b = sim.nodes.first(where: { $0.id == edge.target })
+                                let a = sim.nodesByID[edge.source],
+                                let b = sim.nodesByID[edge.target]
                             else { continue }
 
                             let dimmed = isEdgeDimmed(edge)
@@ -164,6 +164,14 @@ struct GraphCanvasView: View {
             }
             .onAppear {
                 center = CGPoint(x: geo.size.width / 2, y: geo.size.height / 2)
+            }
+            .onDisappear {
+                // Otherwise the 60fps physics tick keeps running in the
+                // background for as long as `sim` is alive (the whole app
+                // session), even while this view isn't shown — e.g. back on
+                // the search/splash screen. `load()` restarts the timer via
+                // `start(center:)` the next time the graph appears.
+                sim.stop()
             }
         }
     }

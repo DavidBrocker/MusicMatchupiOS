@@ -62,7 +62,7 @@ struct ContentView: View {
                                     }
                                 }
                                 .buttonStyle(.borderedProminent)
-                                .disabled(searchText.isEmpty)
+                                .disabled(searchText.isEmpty || store.isLoading)
                             }
                             .padding(.horizontal)
 
