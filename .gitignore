@@ -1,0 +1,5 @@
+.DS_Store
+*.p8
+.env
+MusicKitSandbox/.build/
+musickitr/
