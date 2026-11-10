@@ -3,3 +3,11 @@
 .env
 MusicKitSandbox/.build/
 musickitr/
+
+# per-machine Xcode state
+*.xcuserdatad/
+xcuserdata/
+
+# scratch outputs
+scratch/
+.Rapp.history
