@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#f0eee9;font-family:'Kalam',cursive}
+.dv-turn{padding:40px 44px 32px;border-bottom:1px solid rgba(0,0,0,.08)}
+.dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 20px}
+.dv-tid{font:700 11px 'Kalam',cursive;padding:3px 7px;background:#1a1a1a;color:#fff;border-radius:4px;text-decoration:none}
+.dv-tname{font:700 15px 'Kalam',cursive;color:#1a1a1a}
+.dv-opts{display:flex;flex-wrap:wrap;gap:36px;align-items:flex-start}
+.dv-opt{flex:none;display:flex;flex-direction:column;gap:9px}
+.dv-oid{font:700 11px 'Kalam',cursive;padding:3px 8px;background:rgba(0,0,0,.08);color:#1a1a1a;border-radius:5px;text-decoration:none}
+.dv-olabel{font:400 13px 'Kalam',cursive;color:rgba(0,0,0,.6);max-width:640px}
+.dv-row{display:flex;gap:14px;align-items:flex-start}
+.frame{width:190px;height:370px;background:#0f0f12;border:2px solid #1a1a1a;border-radius:18px 20px 17px 19px/20px 17px 20px 18px;position:relative;overflow:hidden;flex:none}
+.starfield{position:absolute;inset:0;background-image:radial-gradient(circle,#fff 1px,transparent 1px);background-size:22px 22px;opacity:.35}
+.hdr{position:absolute;top:8px;left:0;right:0;text-align:center;color:#fff;font:700 12px 'Kalam',cursive}
+.sk-box{border:1.5px solid #ddd;border-radius:8px 11px 7px 12px/10px 7px 12px 8px;color:#ddd;background:rgba(255,255,255,.06)}
+.sk-box.dark{border-color:#333;color:#333;background:rgba(0,0,0,.5)}
+.node{position:absolute;border-radius:50%;background:rgba(255,255,255,.15);border:1.5px solid #999}
+.arrow{align-self:center;font:700 20px 'Kalam',cursive;color:#999;padding-top:150px}
+.arrlabel{font:400 11px 'Kalam',cursive;color:#777;text-align:center;margin-top:-4px}
+.dv-next{margin:22px 0 0;font:13px/1.5 'Kalam',cursive;color:rgba(0,0,0,.55)}
+.tag{position:absolute;font:400 10px 'Kalam',cursive;color:#666;background:#fff;border:1px solid #999;border-radius:4px;padding:1px 4px}
+</style>
+</helmet>
+
+<section class="dv-turn" id="t5">
+<div class="dv-thd"><a class="dv-tid" href="#t5">5</a><span class="dv-tname">Riffs on <a class="dv-oid" href="#4a">4a</a> + <a class="dv-oid" href="#4b">4b</a> at 30+ expansions — deep-field scale</span></div>
+<div class="dv-opts">
+
+<div class="dv-opt" id="5a">
+<div class="dv-olabel"><a class="dv-oid" href="#5a">5a</a> Structure exposed — same layout with the tier rings and halo boundaries drawn in, so you can see why it stays legible: distance-from-seed sets the ring, similarity sets the halo, jitter inside both keeps it feeling organic rather than gridded.</div>
+<div class="frame" style="width:300px;height:480px">
+  <div class="starfield" style="opacity:.25"></div>
+  <div class="node" style="border:1px dashed #444;width:110px;height:110px;top:185px;left:95px"></div>
+  <div class="node" style="border:1px dashed #333;width:220px;height:220px;top:130px;left:40px"></div>
+  <div class="node" style="border:1px dashed #2a2a2a;width:290px;height:290px;top:95px;left:5px"></div>
+  <div style="position:absolute;top:190px;left:170px;width:150px;height:150px;border-radius:50%;background:radial-gradient(circle,rgba(160,130,210,.28),transparent 70%)"></div>
+  <div style="position:absolute;top:250px;left:0px;width:170px;height:170px;border-radius:50%;background:radial-gradient(circle,rgba(120,190,190,.26),transparent 70%)"></div>
+  <div style="position:absolute;top:60px;left:0px;width:140px;height:170px;border-radius:50%;background:radial-gradient(circle,rgba(210,170,130,.24),transparent 70%)"></div>
+  <div style="position:absolute;top:40px;left:150px;width:170px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(130,150,220,.26),transparent 70%)"></div>
+  <div class="node" style="width:22px;height:22px;top:229px;left:199px;border-color:#fff"></div>
+  <div class="node" style="width:22px;height:22px;top:272px;left:164px;border-color:#fff"></div>
+  <div class="node" style="width:22px;height:22px;top:279px;left:110px;border-color:#fff"></div>
+  <div class="node" style="width:22px;height:22px;top:229px;left:87px;border-color:#fff"></div>
+  <div class="node" style="width:22px;height:22px;top:177px;left:109px;border-color:#fff"></div>
+  <div class="node" style="width:22px;height:22px;top:182px;left:166px;border-color:#fff"></div>
+  <div class="node" style="width:14px;height:14px;top:255px;left:240px;opacity:.75"></div>
+  <div class="node" style="width:14px;height:14px;top:311px;left:225px;opacity:.75"></div>
+  <div class="node" style="width:14px;height:14px;top:325px;left:168px;opacity:.75"></div>
+  <div class="node" style="width:14px;height:14px;top:349px;left:112px;opacity:.75"></div>
+  <div class="node" style="width:14px;height:14px;top:304px;left:72px;opacity:.75"></div>
+  <div class="node" style="width:14px;height:14px;top:262px;left:36px;opacity:.75"></div>
+  <div class="node" style="width:14px;height:14px;top:208px;left:51px;opacity:.75"></div>
+  <div class="node" style="width:14px;height:14px;top:151px;left:61px;opacity:.75"></div>
+  <div class="node" style="width:14px;height:14px;top:100px;left:73px;opacity:.75"></div>
+  <div class="node" style="width:14px;height:14px;top:117px;left:120px;opacity:.75"></div>
+  <div class="node" style="width:14px;height:14px;top:97px;left:174px;opacity:.75"></div>
+  <div class="node" style="width:14px;height:14px;top:162px;left:214px;opacity:.75"></div>
+  <div class="node" style="width:8px;height:8px;top:236px;left:291px;opacity:.4"></div>
+  <div class="node" style="width:8px;height:8px;top:285px;left:282px;opacity:.4"></div>
+  <div class="node" style="width:8px;height:8px;top:329px;left:258px;opacity:.4"></div>
+  <div class="node" style="width:8px;height:8px;top:362px;left:219px;opacity:.4"></div>
+  <div class="node" style="width:8px;height:8px;top:378px;left:171px;opacity:.4"></div>
+  <div class="node" style="width:8px;height:8px;top:378px;left:121px;opacity:.4"></div>
+  <div class="node" style="width:8px;height:8px;top:362px;left:74px;opacity:.4"></div>
+  <div class="node" style="width:8px;height:8px;top:329px;left:34px;opacity:.4"></div>
+  <div class="node" style="width:8px;height:8px;top:285px;left:10px;opacity:.4"></div>
+  <div class="node" style="width:8px;height:8px;top:236px;left:1px;opacity:.4"></div>
+  <div class="node" style="width:8px;height:8px;top:187px;left:10px;opacity:.4"></div>
+  <div class="node" style="width:8px;height:8px;top:143px;left:34px;opacity:.4"></div>
+  <div class="node" style="width:8px;height:8px;top:110px;left:74px;opacity:.4"></div>
+  <div class="node" style="width:8px;height:8px;top:90px;left:121px;opacity:.4"></div>
+  <div class="node" style="width:8px;height:8px;top:90px;left:171px;opacity:.4"></div>
+  <div class="node" style="width:8px;height:8px;top:110px;left:219px;opacity:.4"></div>
+  <div class="node" style="width:8px;height:8px;top:143px;left:258px;opacity:.4"></div>
+  <div class="node" style="width:8px;height:8px;top:187px;left:282px;opacity:.4"></div>
+  <div class="tag" style="top:6px;left:6px">3 tiers · 4 similarity halos</div>
+</div>
+</div>
+
+<div class="dv-opt" id="5b">
+<div class="dv-olabel"><a class="dv-oid" href="#5b">5b</a> Lived-in view — guides removed, this is what you'd actually see day to day. The order is still doing its job underneath: your eye reads bright core → fading haze, and softly-colored regions, without any visible grid. Feels closer to a deep-field photo than a diagram.</div>
+<div class="frame" style="width:300px;height:480px;background:#050505">
+  <div class="starfield" style="opacity:.3"></div>
+  <div style="position:absolute;top:190px;left:170px;width:150px;height:150px;border-radius:50%;background:radial-gradient(circle,rgba(160,130,210,.22),transparent 70%)"></div>
+  <div style="position:absolute;top:250px;left:0px;width:170px;height:170px;border-radius:50%;background:radial-gradient(circle,rgba(120,190,190,.2),transparent 70%)"></div>
+  <div style="position:absolute;top:60px;left:0px;width:140px;height:170px;border-radius:50%;background:radial-gradient(circle,rgba(210,170,130,.18),transparent 70%)"></div>
+  <div style="position:absolute;top:40px;left:150px;width:170px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(130,150,220,.2),transparent 70%)"></div>
+  <div class="node" style="width:22px;height:22px;top:229px;left:199px;border-color:#fff"></div>
+  <div class="node" style="width:22px;height:22px;top:272px;left:164px;border-color:#fff"></div>
+  <div class="node" style="width:22px;height:22px;top:279px;left:110px;border-color:#fff"></div>
+  <div class="node" style="width:22px;height:22px;top:229px;left:87px;border-color:#fff"></div>
+  <div class="node" style="width:22px;height:22px;top:177px;left:109px;border-color:#fff"></div>
+  <div class="node" style="width:22px;height:22px;top:182px;left:166px;border-color:#fff"></div>
+  <div class="node" style="width:14px;height:14px;top:255px;left:240px;opacity:.75"></div>
+  <div class="node" style="width:14px;height:14px;top:311px;left:225px;opacity:.75"></div>
+  <div class="node" style="width:14px;height:14px;top:325px;left:168px;opacity:.75"></div>
+  <div class="node" style="width:14px;height:14px;top:349px;left:112px;opacity:.75"></div>
+  <div class="node" style="width:14px;height:14px;top:304px;left:72px;opacity:.75"></div>
+  <div class="node" style="width:14px;height:14px;top:262px;left:36px;opacity:.75"></div>
+  <div class="node" style="width:14px;height:14px;top:208px;left:51px;opacity:.75"></div>
+  <div class="node" style="width:14px;height:14px;top:151px;left:61px;opacity:.75"></div>
+  <div class="node" style="width:14px;height:14px;top:100px;left:73px;opacity:.75"></div>
+  <div class="node" style="width:14px;height:14px;top:117px;left:120px;opacity:.75"></div>
+  <div class="node" style="width:14px;height:14px;top:97px;left:174px;opacity:.75"></div>
+  <div class="node" style="width:14px;height:14px;top:162px;left:214px;opacity:.75"></div>
+  <div class="node" style="width:8px;height:8px;top:236px;left:291px;opacity:.4"></div>
+  <div class="node" style="width:8px;height:8px;top:285px;left:282px;opacity:.4"></div>
+  <div class="node" style="width:8px;height:8px;top:329px;left:258px;opacity:.4"></div>
+  <div class="node" style="width:8px;height:8px;top:362px;left:219px;opacity:.4"></div>
+  <div class="node" style="width:8px;height:8px;top:378px;left:171px;opacity:.4"></div>
+  <div class="node" style="width:8px;height:8px;top:378px;left:121px;opacity:.4"></div>
+  <div class="node" style="width:8px;height:8px;top:362px;left:74px;opacity:.4"></div>
+  <div class="node" style="width:8px;height:8px;top:329px;left:34px;opacity:.4"></div>
+  <div class="node" style="width:8px;height:8px;top:285px;left:10px;opacity:.4"></div>
+  <div class="node" style="width:8px;height:8px;top:236px;left:1px;opacity:.4"></div>
+  <div class="node" style="width:8px;height:8px;top:187px;left:10px;opacity:.4"></div>
+  <div class="node" style="width:8px;height:8px;top:143px;left:34px;opacity:.4"></div>
+  <div class="node" style="width:8px;height:8px;top:110px;left:74px;opacity:.4"></div>
+  <div class="node" style="width:8px;height:8px;top:90px;left:121px;opacity:.4"></div>
+  <div class="node" style="width:8px;height:8px;top:90px;left:171px;opacity:.4"></div>
+  <div class="node" style="width:8px;height:8px;top:110px;left:219px;opacity:.4"></div>
+  <div class="node" style="width:8px;height:8px;top:143px;left:258px;opacity:.4"></div>
+  <div class="node" style="width:8px;height:8px;top:187px;left:282px;opacity:.4"></div>
+</div>
+</div>
+
+</div>
+<p class="dv-next">Try next: "add faint connecting lines back into <a class="dv-oid" href="#5b">5b</a>" · "what does tapping a distant tier-3 node do" · "try a warmer, more colorful nebula palette"</p>
+</section>
+
+<section class="dv-turn" id="t4">
+<div class="dv-thd"><a class="dv-tid" href="#t4">4</a><span class="dv-tname">Taming the constellation at scale (5+ expansions)</span></div>
+<div class="dv-opts">
+
+<div class="dv-opt" id="4a">
+<div class="dv-olabel"><a class="dv-oid" href="#4a">4a</a> Radial tiers — nodes settle into concentric shells by hops-from-seed. Chaotic scatter/rotation is allowed within a ring (that's the fun part), but the ring itself gives your eye a clear "closer = more central" order — gestalt continuation via distance.</div>
+<div class="frame" style="width:260px;height:420px">
+  <div class="starfield" style="opacity:.25"></div>
+  <div class="node" style="width:0;height:0;border:1px dashed #444;border-radius:50%;width:90px;height:90px;top:165px;left:85px"></div>
+  <div class="node" style="width:0;height:0;border:1px dashed #333;border-radius:50%;width:180px;height:180px;top:120px;left:40px"></div>
+  <div class="node" style="width:36px;height:36px;top:195px;left:112px;border-color:#fff"></div>
+  <div class="node" style="width:16px;height:16px;top:150px;left:100px"></div>
+  <div class="node" style="width:18px;height:18px;top:170px;left:60px"></div>
+  <div class="node" style="width:14px;height:14px;top:225px;left:70px"></div>
+  <div class="node" style="width:16px;height:16px;top:240px;left:150px"></div>
+  <div class="node" style="width:12px;height:12px;top:100px;left:150px;opacity:.6"></div>
+  <div class="node" style="width:10px;height:10px;top:280px;left:110px;opacity:.6"></div>
+  <div class="node" style="width:11px;height:11px;top:130px;left:200px;opacity:.6"></div>
+  <div class="node" style="width:9px;height:9px;top:300px;left:180px;opacity:.6"></div>
+  <div class="node" style="width:10px;height:10px;top:90px;left:80px;opacity:.6"></div>
+  <div class="tag" style="top:8px;left:8px">tier 3 (dim, sparse)</div>
+  <div class="tag" style="bottom:8px;right:8px">seed at center</div>
+</div>
+</div>
+
+<div class="dv-opt" id="4b">
+<div class="dv-olabel"><a class="dv-oid" href="#4b">4b</a> Similarity clusters with halos — artists that are musically close bunch into loose blobs with a faint shared glow (common region). Placement inside a halo can be messy; the halo boundary is what keeps the whole thing legible.</div>
+<div class="frame" style="width:260px;height:420px">
+  <div class="starfield" style="opacity:.25"></div>
+  <div style="position:absolute;top:60px;left:30px;width:100px;height:90px;border-radius:50%;background:radial-gradient(circle,rgba(150,120,200,.25),transparent 70%)"></div>
+  <div style="position:absolute;top:180px;left:120px;width:110px;height:100px;border-radius:50%;background:radial-gradient(circle,rgba(120,180,190,.25),transparent 70%)"></div>
+  <div style="position:absolute;top:280px;left:40px;width:90px;height:80px;border-radius:50%;background:radial-gradient(circle,rgba(200,150,120,.25),transparent 70%)"></div>
+  <div class="node" style="width:24px;height:24px;top:90px;left:60px"></div>
+  <div class="node" style="width:16px;height:16px;top:70px;left:90px"></div>
+  <div class="node" style="width:14px;height:14px;top:110px;left:100px"></div>
+  <div class="node" style="width:22px;height:22px;top:210px;left:150px"></div>
+  <div class="node" style="width:15px;height:15px;top:190px;left:190px"></div>
+  <div class="node" style="width:13px;height:13px;top:230px;left:200px"></div>
+  <div class="node" style="width:18px;height:18px;top:300px;left:60px"></div>
+  <div class="node" style="width:12px;height:12px;top:320px;left:90px"></div>
+  <div class="tag" style="top:8px;left:8px">3 genre clusters</div>
+</div>
+</div>
+
+<div class="dv-opt" id="4c">
+<div class="dv-olabel"><a class="dv-oid" href="#4c">4c</a> Depth &amp; magnitude — nodes shrink and dim the further they are from your current focus, like real star magnitude. Declutters by de-emphasis rather than repositioning, so the layout itself can stay wonderfully chaotic.</div>
+<div class="frame" style="width:260px;height:420px">
+  <div class="starfield" style="opacity:.3"></div>
+  <div class="node" style="width:40px;height:40px;top:190px;left:110px;border-color:#fff"></div>
+  <div class="node" style="width:20px;height:20px;top:140px;left:150px;opacity:.85"></div>
+  <div class="node" style="width:18px;height:18px;top:230px;left:60px;opacity:.85"></div>
+  <div class="node" style="width:11px;height:11px;top:90px;left:190px;opacity:.5"></div>
+  <div class="node" style="width:10px;height:10px;top:280px;left:40px;opacity:.5"></div>
+  <div class="node" style="width:9px;height:9px;top:100px;left:70px;opacity:.5"></div>
+  <div class="node" style="width:6px;height:6px;top:50px;left:130px;opacity:.25"></div>
+  <div class="node" style="width:6px;height:6px;top:330px;left:180px;opacity:.25"></div>
+  <div class="node" style="width:5px;height:5px;top:60px;left:220px;opacity:.25"></div>
+  <div class="node" style="width:5px;height:5px;top:350px;left:80px;opacity:.25"></div>
+  <div class="tag" style="top:8px;left:8px">near = bright/big, far = dim/tiny</div>
+</div>
+</div>
+
+<div class="dv-opt" id="4d">
+<div class="dv-olabel"><a class="dv-oid" href="#4d">4d</a> Focus + context — only your active lineage renders in full detail (labels, size); everything else collapses into small dim "cluster stars" you can tap to re-expand. Keeps the screen calm no matter how much history you have.</div>
+<div class="frame" style="width:260px;height:420px">
+  <div class="starfield" style="opacity:.3"></div>
+  <div class="node" style="width:34px;height:34px;top:190px;left:110px;border-color:#fff"></div>
+  <div class="node" style="width:24px;height:24px;top:130px;left:80px;border-color:#fff"></div>
+  <div class="node" style="width:20px;height:20px;top:230px;left:150px;border-color:#fff"></div>
+  <div class="tag" style="top:150px;right:14px">active lineage — full detail</div>
+  <div class="node" style="width:26px;height:26px;top:70px;left:190px;opacity:.35"></div>
+  <div class="tag" style="top:44px;right:6px;font-size:9px">12 collapsed ·</div>
+  <div class="node" style="width:22px;height:22px;top:320px;left:40px;opacity:.35"></div>
+  <div class="tag" style="top:346px;left:4px;font-size:9px">· 8 collapsed</div>
+</div>
+</div>
+
+</div>
+<p class="dv-next">Try next: "combine <a class="dv-oid" href="#4a">4a</a>'s tiers with <a class="dv-oid" href="#4c">4c</a>'s magnitude fade" · "how does tapping a collapsed cluster in <a class="dv-oid" href="#4d">4d</a> work" · "show <a class="dv-oid" href="#4b">4b</a> at an even bigger scale, 50+ nodes"</p>
+</section>
+
+<section class="dv-turn" id="t3">
+<div class="dv-thd"><a class="dv-tid" href="#t3">3</a><span class="dv-tname">Triage Queue — node generation &amp; selection</span></div>
+<div class="dv-opts">
+
+<div class="dv-opt" id="3a">
+<div class="dv-olabel"><a class="dv-oid" href="#3a">3a</a> Refined card stack — closest to today: full-bleed swipeable cards over the starfield, slim dot-progress row up top, and a dichotomous pass / add — no third heart button, since it never had a real function apart from +. Favoriting moves to the graph itself later, on nodes that earn it (like the seed-lineage star).</div>
+<div class="dv-row">
+  <div class="frame" style="background:#000">
+    <div class="starfield" style="opacity:.2"></div>
+    <div class="tag" style="top:6px;left:0;right:0;text-align:center;background:none;border:none;color:#888">• • ○ ○ ○</div>
+    <div class="sk-box dark" style="position:absolute;top:40px;left:20px;right:20px;bottom:90px;display:flex;align-items:center;justify-content:center;font-size:10px">album art + snippet playing</div>
+    <div style="position:absolute;bottom:20px;left:0;right:0;display:flex;justify-content:space-around">
+      <span style="color:#c66;font-size:20px">✕</span><span style="color:#6c9;font-size:20px">✓</span>
+    </div>
+    <div class="tag" style="bottom:52px;left:0;right:0;text-align:center;background:none;border:none;color:#666">pass · add</div>
+  </div>
+</div>
+</div>
+
+<div class="dv-opt" id="3b">
+<div class="dv-olabel"><a class="dv-oid" href="#3b">3b</a> Staged in orbit — candidates appear right in their would-be graph position around the source node, dimmed. Each lights up + plays its snippet in turn; tap keeps it (snaps solid, line connects live), swipe off-screen discards it. No separate screen — triage IS the graph.</div>
+<div class="dv-row">
+  <div class="frame" style="background:#000">
+    <div class="starfield" style="opacity:.3"></div>
+    <div class="node" style="width:50px;height:50px;top:150px;left:75px;border-color:#fff"></div>
+    <div class="node" style="width:22px;height:22px;top:90px;left:40px;opacity:.9;border-color:#fff"></div>
+    <div class="node" style="width:18px;height:18px;top:100px;left:130px;opacity:.25"></div>
+    <div class="node" style="width:18px;height:18px;top:210px;left:130px;opacity:.25"></div>
+    <div class="node" style="width:18px;height:18px;top:220px;left:40px;opacity:.25"></div>
+    <div class="tag" style="top:60px;left:10px">now playing, glowing</div>
+    <div class="tag" style="top:230px;right:6px">dimmed, waiting turn</div>
+  </div>
+</div>
+</div>
+
+<div class="dv-opt" id="3c">
+<div class="dv-olabel"><a class="dv-oid" href="#3c">3c</a> Center stage + filmstrip — one enlarged "now playing" card centered, remaining queue previewed as a small horizontal rail below it so you always see how many are left and what's coming, drag the center card to keep/skip.</div>
+<div class="dv-row">
+  <div class="frame" style="background:#000">
+    <div class="starfield" style="opacity:.2"></div>
+    <div class="sk-box dark" style="position:absolute;top:50px;left:30px;right:30px;height:150px;display:flex;align-items:center;justify-content:center;font-size:10px">now playing</div>
+    <div style="position:absolute;top:220px;left:14px;right:14px;display:flex;gap:6px;justify-content:center">
+      <div class="sk-box" style="width:26px;height:26px"></div>
+      <div class="sk-box" style="width:26px;height:26px"></div>
+      <div class="sk-box" style="width:26px;height:26px"></div>
+      <div class="sk-box" style="width:26px;height:26px"></div>
+    </div>
+    <div class="tag" style="top:250px;left:35px;right:35px;text-align:center">up next rail</div>
+  </div>
+</div>
+</div>
+
+<div class="dv-opt" id="3d">
+<div class="dv-olabel"><a class="dv-oid" href="#3d">3d</a> Two-pass triage — fast first pass is a tap-to-like grid of candidate thumbnails (silent, quick scan), liked ones graduate to a second pass where each plays its snippet solo before joining the constellation.</div>
+<div class="dv-row">
+  <div class="frame" style="background:#000">
+    <div class="starfield" style="opacity:.2"></div>
+    <div class="tag" style="top:8px;left:0;right:0;text-align:center;background:none;border:none;color:#888">pass 1 — tap to shortlist</div>
+    <div style="position:absolute;top:40px;left:14px;right:14px;display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
+      <div class="sk-box" style="height:44px"></div><div class="sk-box" style="height:44px;background:rgba(255,255,255,.25)"></div><div class="sk-box" style="height:44px"></div>
+      <div class="sk-box" style="height:44px;background:rgba(255,255,255,.25)"></div><div class="sk-box" style="height:44px"></div><div class="sk-box" style="height:44px"></div>
+    </div>
+  </div>
+  <div class="arrow">→<div class="arrlabel">shortlist plays</div></div>
+  <div class="frame" style="background:#000">
+    <div class="starfield" style="opacity:.2"></div>
+    <div class="tag" style="top:8px;left:0;right:0;text-align:center;background:none;border:none;color:#888">pass 2 — confirm w/ audio</div>
+    <div class="sk-box dark" style="position:absolute;top:40px;left:30px;right:30px;bottom:90px;display:flex;align-items:center;justify-content:center;font-size:10px">snippet playing</div>
+    <div style="position:absolute;bottom:20px;left:0;right:0;display:flex;justify-content:space-around">
+      <span style="color:#c66">✕</span><span style="color:#69c">♥</span>
+    </div>
+  </div>
+</div>
+</div>
+
+</div>
+<p class="dv-next">Try next: "go deeper on <a class="dv-oid" href="#3b">3b</a>'s in-graph staging" · "combine <a class="dv-oid" href="#3c">3c</a>'s filmstrip with <a class="dv-oid" href="#3a">3a</a>'s controls" · "how would 3b handle a source node with 10+ candidates"</p>
+</section>
+
+<section class="dv-turn" id="t2">
+<div class="dv-thd"><a class="dv-tid" href="#t2">2</a><span class="dv-tname">Riffs on <a class="dv-oid" href="#1a">1a</a> — personal, evolving home constellation</span></div>
+<div class="dv-opts">
+
+<div class="dv-opt" id="2a">
+<div class="dv-olabel"><a class="dv-oid" href="#2a">2a</a> Day one vs. week three — home starts as a small default seed cluster, then grows a personal constellation from every artist you've explored. Opening the app is a cutscene-style push-in from the full sky down to your cluster.</div>
+<div class="dv-row">
+  <div class="frame">
+    <div class="starfield"></div>
+    <div class="hdr">MusicMatchup</div>
+    <div class="node" style="width:26px;height:26px;top:170px;left:82px"></div>
+    <div class="node" style="width:14px;height:14px;top:140px;left:60px;opacity:.5"></div>
+    <div class="node" style="width:14px;height:14px;top:140px;left:120px;opacity:.5"></div>
+    <div class="tag" style="top:130px;right:8px">default seed cluster</div>
+    <div class="sk-box" style="position:absolute;bottom:14px;left:14px;right:14px;height:38px;display:flex;align-items:center;justify-content:center;font-size:11px">Search or explore ▾</div>
+  </div>
+  <div class="arrow">→<div class="arrlabel">weeks of exploring</div></div>
+  <div class="frame">
+    <div class="starfield"></div>
+    <div class="hdr">MusicMatchup</div>
+    <div class="node" style="width:30px;height:30px;top:150px;left:75px"></div>
+    <div class="node" style="width:16px;height:16px;top:100px;left:40px"></div>
+    <div class="node" style="width:20px;height:20px;top:90px;left:110px"></div>
+    <div class="node" style="width:14px;height:14px;top:200px;left:30px"></div>
+    <div class="node" style="width:18px;height:18px;top:220px;left:120px"></div>
+    <div class="node" style="width:12px;height:12px;top:260px;left:80px"></div>
+    <div class="tag" style="top:60px;right:6px">your constellation</div>
+    <div class="sk-box" style="position:absolute;bottom:14px;left:14px;right:14px;height:38px;display:flex;align-items:center;justify-content:center;font-size:11px">Search or explore ▾</div>
+  </div>
+  <div class="arrow">→<div class="arrlabel">app open</div></div>
+  <div class="frame" style="background:#000">
+    <div class="starfield" style="opacity:.6"></div>
+    <div class="tag" style="top:150px;left:35px;right:35px;text-align:center">wide sky, camera pushes in</div>
+    <div class="tag" style="top:6px;right:6px">cutscene-style zoom to your cluster</div>
+  </div>
+</div>
+</div>
+
+<div class="dv-opt" id="2b">
+<div class="dv-olabel"><a class="dv-oid" href="#2b">2b</a> New node ceremony — instead of a big zoom every launch, each newly explored artist gets a one-time "arrival" moment (star travels in, connects, settles) the first time you return home after adding it; ordinary launches are a quick, quiet fade-in.</div>
+<div class="dv-row">
+  <div class="frame">
+    <div class="starfield"></div>
+    <div class="hdr">MusicMatchup</div>
+    <div class="node" style="width:26px;height:26px;top:170px;left:82px"></div>
+    <div class="node" style="width:16px;height:16px;top:120px;left:50px"></div>
+    <div class="tag" style="top:80px;right:20px">● new</div>
+    <div class="node" style="width:10px;height:10px;top:90px;left:130px;border-style:dashed"></div>
+  </div>
+  <div class="arrow">→<div class="arrlabel">travels in &amp; connects</div></div>
+  <div class="frame">
+    <div class="starfield"></div>
+    <div class="hdr">MusicMatchup</div>
+    <div class="node" style="width:26px;height:26px;top:170px;left:82px"></div>
+    <div class="node" style="width:16px;height:16px;top:120px;left:50px"></div>
+    <div class="node" style="width:18px;height:18px;top:130px;left:120px"></div>
+    <div class="tag" style="top:90px;right:14px">settled</div>
+  </div>
+  <div class="arrow">→<div class="arrlabel">next launch</div></div>
+  <div class="frame">
+    <div class="starfield"></div>
+    <div class="hdr">MusicMatchup</div>
+    <div class="node" style="width:26px;height:26px;top:170px;left:82px"></div>
+    <div class="node" style="width:16px;height:16px;top:120px;left:50px"></div>
+    <div class="node" style="width:18px;height:18px;top:130px;left:120px"></div>
+    <div class="tag" style="top:200px;left:35px;right:35px;text-align:center">quiet fade-in, no ceremony</div>
+  </div>
+</div>
+</div>
+
+</div>
+<p class="dv-next">Try next: "go with <a class="dv-oid" href="#2a">2a</a>'s cutscene push-in" · "prefer <a class="dv-oid" href="#2b">2b</a>'s lighter per-artist arrival" · "show what the default seed cluster looks like for a brand-new user"</p>
+</section>
+
+<section class="dv-turn" id="t1">
+<div class="dv-thd"><a class="dv-tid" href="#t1">1</a><span class="dv-tname">Structure options — graph as core, shared starfield, immersive Listen Mode</span></div>
+<div class="dv-opts">
+
+<div class="dv-opt" id="1a">
+<div class="dv-olabel"><a class="dv-oid" href="#1a">1a</a> Graph-as-home, bottom search sheet — no separate empty home; starfield canvas is the app, search slides up as a sheet over it (Maps-style), Listen Mode strips all chrome.</div>
+<div class="dv-row">
+  <div class="frame">
+    <div class="starfield"></div>
+    <div class="hdr">MusicMatchup</div>
+    <div class="node" style="width:34px;height:34px;top:150px;left:60px"></div>
+    <div class="node" style="width:20px;height:20px;top:110px;left:120px"></div>
+    <div class="node" style="width:24px;height:24px;top:200px;left:30px"></div>
+    <div class="sk-box" style="position:absolute;bottom:14px;left:14px;right:14px;height:38px;display:flex;align-items:center;justify-content:center;font-size:11px">Search or explore ▾</div>
+  </div>
+  <div class="arrow">→<div class="arrlabel">tap search</div></div>
+  <div class="frame">
+    <div class="starfield" style="opacity:.15"></div>
+    <div class="sk-box dark" style="position:absolute;top:60px;left:0;right:0;bottom:0;border-radius:16px 16px 0 0;padding-top:10px">
+      <div class="sk-box" style="margin:6px 10px;height:26px;font-size:10px;display:flex;align-items:center;padding-left:8px">Search an artist…</div>
+      <div class="sk-box" style="margin:6px 10px;height:16px"></div>
+      <div class="sk-box" style="margin:6px 10px;height:16px"></div>
+      <div class="sk-box" style="margin:6px 10px;height:16px"></div>
+    </div>
+  </div>
+  <div class="arrow">→<div class="arrlabel">pick artist</div></div>
+  <div class="frame" style="background:#000">
+    <div class="starfield" style="opacity:.2"></div>
+    <div class="node" style="width:80px;height:80px;top:150px;left:55px;border-color:#fff"></div>
+    <div class="sk-box dark" style="position:absolute;bottom:0;left:0;right:0;height:70px;border-radius:0;border:none;display:flex;align-items:center;justify-content:space-around">
+      <span style="color:#c66">✕</span><span style="color:#eee">＋</span><span style="color:#69c">♥</span>
+    </div>
+    <div class="tag" style="top:6px;right:6px">Listen Mode — chrome hidden</div>
+  </div>
+</div>
+</div>
+
+<div class="dv-opt" id="1b">
+<div class="dv-olabel"><a class="dv-oid" href="#1b">1b</a> Spotlight-style search — one continuous canvas; search field floats center over starfield, results fade in as translucent rows, selecting crossfades straight into the graph (no screen swap).</div>
+<div class="dv-row">
+  <div class="frame">
+    <div class="starfield"></div>
+    <div class="hdr">MusicMatchup</div>
+    <div class="sk-box" style="position:absolute;top:140px;left:16px;right:16px;height:36px;display:flex;align-items:center;justify-content:center;font-size:11px">Search an artist…</div>
+    <div style="position:absolute;top:190px;left:16px;right:16px;display:flex;gap:6px;justify-content:center">
+      <div class="sk-box" style="font-size:9px;padding:4px 6px">Random</div>
+      <div class="sk-box" style="font-size:9px;padding:4px 6px">Genres</div>
+    </div>
+  </div>
+  <div class="arrow">→<div class="arrlabel">typing</div></div>
+  <div class="frame">
+    <div class="starfield" style="opacity:.4"></div>
+    <div class="sk-box" style="position:absolute;top:36px;left:16px;right:16px;height:32px;font-size:11px;display:flex;align-items:center;padding-left:8px">Fleetw|</div>
+    <div class="sk-box" style="position:absolute;top:74px;left:16px;right:16px;height:18px;background:rgba(255,255,255,.1);font-size:9px;padding-left:6px;display:flex;align-items:center">Fleetwood Mac</div>
+    <div class="sk-box" style="position:absolute;top:96px;left:16px;right:16px;height:18px;background:rgba(255,255,255,.06);font-size:9px;padding-left:6px;display:flex;align-items:center">Fleet Foxes</div>
+    <div class="node" style="width:16px;height:16px;top:260px;left:40px;opacity:.3"></div>
+    <div class="node" style="width:20px;height:20px;top:290px;left:110px;opacity:.3"></div>
+  </div>
+  <div class="arrow">→<div class="arrlabel">tap result</div></div>
+  <div class="frame" style="background:#000">
+    <div class="starfield" style="opacity:.2"></div>
+    <div class="node" style="width:70px;height:70px;top:150px;left:60px;border-color:#fff"></div>
+    <div class="node" style="width:24px;height:24px;top:110px;left:40px"></div>
+    <div class="node" style="width:24px;height:24px;top:110px;left:130px"></div>
+    <div class="tag" style="top:6px;right:6px">same canvas, camera zooms in</div>
+  </div>
+</div>
+</div>
+
+<div class="dv-opt" id="1c">
+<div class="dv-olabel"><a class="dv-oid" href="#1c">1c</a> Bottom tab bar — explicit Graph / Search / Saved tabs so location is always clear; Listen Mode opens as a full-screen modal that hides the tab bar entirely, Game-Mode style.</div>
+<div class="dv-row">
+  <div class="frame">
+    <div class="starfield"></div>
+    <div class="node" style="width:40px;height:40px;top:160px;left:75px"></div>
+    <div class="tag" style="top:150px;left:50px">start with an artist</div>
+    <div style="position:absolute;bottom:0;left:0;right:0;height:40px;background:#1a1a1a;display:flex;justify-content:space-around;align-items:center">
+      <span style="color:#fff;font-size:9px">◎ Graph</span><span style="color:#777;font-size:9px">🔍 Search</span><span style="color:#777;font-size:9px">☆ Saved</span>
+    </div>
+  </div>
+  <div class="arrow">→<div class="arrlabel">Search tab</div></div>
+  <div class="frame">
+    <div class="starfield"></div>
+    <div class="sk-box" style="margin:10px;height:26px;font-size:10px;display:flex;align-items:center;padding-left:8px">Search an artist…</div>
+    <div class="sk-box" style="margin:0 10px 6px;height:16px;background:rgba(255,255,255,.08)"></div>
+    <div class="sk-box" style="margin:0 10px 6px;height:16px;background:rgba(255,255,255,.08)"></div>
+    <div style="position:absolute;bottom:0;left:0;right:0;height:40px;background:#1a1a1a;display:flex;justify-content:space-around;align-items:center">
+      <span style="color:#777;font-size:9px">◎ Graph</span><span style="color:#fff;font-size:9px">🔍 Search</span><span style="color:#777;font-size:9px">☆ Saved</span>
+    </div>
+  </div>
+  <div class="arrow">→<div class="arrlabel">Listen Mode</div></div>
+  <div class="frame" style="background:#000">
+    <div class="starfield" style="opacity:.15"></div>
+    <div class="sk-box dark" style="position:absolute;top:60px;left:20px;right:20px;bottom:80px;display:flex;align-items:center;justify-content:center;font-size:10px">artist card</div>
+    <div style="position:absolute;bottom:16px;left:0;right:0;display:flex;justify-content:space-around">
+      <span style="color:#c66">✕</span><span style="color:#69c">♥</span>
+    </div>
+    <div class="tag" style="top:6px;right:6px">tab bar hidden, ✕ close top-left only</div>
+  </div>
+</div>
+</div>
+
+<div class="dv-opt" id="1d">
+<div class="dv-olabel"><a class="dv-oid" href="#1d">1d</a> Draggable sheet over canvas — graph fills the screen always; a Maps-style sheet peeks up from the bottom for search/details and can be dragged away; Listen Mode drops the sheet entirely for a stripped, focus-mode takeover.</div>
+<div class="dv-row">
+  <div class="frame">
+    <div class="starfield"></div>
+    <div class="node" style="width:50px;height:50px;top:70px;left:70px"></div>
+    <div class="node" style="width:20px;height:20px;top:40px;left:30px"></div>
+    <div class="node" style="width:22px;height:22px;top:120px;left:140px"></div>
+    <div class="sk-box dark" style="position:absolute;bottom:0;left:0;right:0;height:60px;border-radius:14px 14px 0 0;display:flex;align-items:center;justify-content:center;font-size:10px">— search sheet (peek) —</div>
+  </div>
+  <div class="arrow">→<div class="arrlabel">drag sheet up</div></div>
+  <div class="frame">
+    <div class="starfield" style="opacity:.15"></div>
+    <div class="node" style="width:20px;height:20px;top:20px;left:80px;opacity:.3"></div>
+    <div class="sk-box dark" style="position:absolute;top:70px;left:0;right:0;bottom:0;border-radius:14px 14px 0 0;padding-top:10px">
+      <div class="sk-box" style="margin:6px 10px;height:22px;font-size:10px;display:flex;align-items:center;padding-left:8px">Search an artist…</div>
+      <div class="sk-box" style="margin:6px 10px;height:14px"></div>
+      <div class="sk-box" style="margin:6px 10px;height:14px"></div>
+    </div>
+  </div>
+  <div class="arrow">→<div class="arrlabel">Listen Mode</div></div>
+  <div class="frame" style="background:#000">
+    <div class="starfield" style="opacity:.15"></div>
+    <div class="sk-box dark" style="position:absolute;top:50px;left:16px;right:16px;bottom:56px;display:flex;align-items:center;justify-content:center;font-size:10px">card stack</div>
+    <div style="position:absolute;bottom:12px;left:0;right:0;display:flex;justify-content:space-around">
+      <span style="color:#c66">✕</span><span style="color:#eee">＋</span><span style="color:#69c">♥</span>
+    </div>
+    <div class="tag" style="top:6px;right:6px">sheet gone, corner dot-counter</div>
+  </div>
+</div>
+</div>
+
+</div>
+<p class="dv-next">Try next: "combine <a class="dv-oid" href="#1a">1a</a>'s sheet with <a class="dv-oid" href="#1c">1c</a>'s tabs" · "make Listen Mode in <a class="dv-oid" href="#1d">1d</a> even more minimal" · "go deeper on <a class="dv-oid" href="#1b">1b</a>'s search transition"</p>
+</section>
+</x-dc>
+</body>
+</html>

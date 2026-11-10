@@ -22,8 +22,9 @@ struct GraphCanvasView: View {
     var body: some View {
         GeometryReader { geo in
             ZStack {
-                StarfieldBackgroundView()
-                    .ignoresSafeArea()
+                Group {
+                    StarfieldBackgroundView()
+                        .ignoresSafeArea()
 
                 ZStack {
                     // Draw edges
@@ -140,19 +141,31 @@ struct GraphCanvasView: View {
                         }
                         .padding()
                         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 12))
-                        .padding(.bottom, (player.isPlaying || !sim.pendingReviewIDs.isEmpty) ? 110 : 16)
+                        .padding(.bottom, player.isPlaying ? 110 : 16)
                     }
                 }
 
-                // Bottom slot: listen-mode queue takes priority over the
-                // plain mini player, since the queue *is* a player too.
-                VStack {
-                    Spacer()
-                    if !sim.pendingReviewIDs.isEmpty {
-                        ListenQueueView(sim: sim, player: player)
-                    } else if player.isPlaying {
+                // Bottom slot for the plain mini player. The triage queue
+                // (below) takes over the whole screen instead of sharing
+                // this slot, since it's a full-bleed card stack now.
+                if player.isPlaying {
+                    VStack {
+                        Spacer()
                         MiniPlayerView(player: player, showDetailSheet: $showDetailSheet)
                     }
+                }
+                }
+                .opacity(isModalMoment ? 0.2 : 1.0)
+
+                // Seed confirmation takes priority over the triage queue —
+                // both can be true at once right after a fresh load(), and
+                // "who did I search" has to land before "judge this stranger."
+                if let seedID = sim.seedConfirmationID, let seedNode = sim.nodesByID[seedID] {
+                    SeedConfirmationView(node: seedNode, player: player) {
+                        sim.confirmSeed()
+                    }
+                } else if !sim.pendingReviewIDs.isEmpty {
+                    ListenQueueView(sim: sim, player: player)
                 }
             }
             .sheet(isPresented: $showDetailSheet) {
@@ -178,6 +191,10 @@ struct GraphCanvasView: View {
 
     // MARK: - Dimming helpers
 
+    private var isModalMoment: Bool {
+        sim.seedConfirmationID != nil || !sim.pendingReviewIDs.isEmpty
+    }
+
     func isDimmed(_ node: GraphNode) -> Bool {
         guard let selected = selectedNode else { return false }
         if node.id == selected.id { return false }
@@ -199,10 +216,23 @@ struct NodeView: View {
     var isSelected: Bool
     var isDimmed: Bool = false
 
+    // Same hue for every node in a galaxy (seed + all its descendants,
+    // however many hops deep) — subtle enough not to compete with the
+    // selection/accent color, just enough to read "these belong together."
+    private var galaxyColor: Color {
+        Color(hue: node.galaxyHue, saturation: 0.65, brightness: 0.95)
+    }
+
     var body: some View {
         let size = node.nodeSize
 
         ZStack {
+            // Galaxy glow — soft, blurred, sits behind everything else.
+            Circle()
+                .fill(galaxyColor.opacity(isDimmed ? 0.10 : 0.30))
+                .frame(width: size * 1.7, height: size * 1.7)
+                .blur(radius: size * 0.22)
+
             Circle()
                 .fill(isSelected ? Color.accentColor.opacity(0.3) : Color.secondary.opacity(0.15))
                 .frame(width: size, height: size)
@@ -248,5 +278,84 @@ struct NodeView: View {
             .foregroundStyle(.white)
             .frame(width: size, height: size)
             .background(Circle().fill(Color.secondary.opacity(0.5)))
+    }
+}
+
+// The beat between "you searched an artist" and "now judge some strangers":
+// plays the seed's own preview and holds its portrait on screen for a few
+// seconds (or until tapped/Continue) before the triage queue takes over —
+// so the first thing you hear is always the artist you actually typed.
+private struct SeedConfirmationView: View {
+    @ObservedObject var node: GraphNode
+    var player: PreviewPlayer
+    var onContinue: () -> Void
+
+    var body: some View {
+        VStack(spacing: 18) {
+            Text("Starting from")
+                .font(.caption)
+                .foregroundStyle(.secondary)
+
+            ZStack {
+                Circle()
+                    .fill(Color(hue: node.galaxyHue, saturation: 0.65, brightness: 0.95).opacity(0.35))
+                    .frame(width: 150, height: 150)
+                    .blur(radius: 20)
+
+                if let url = node.imageURL {
+                    AsyncImage(url: url) { phase in
+                        if case .success(let img) = phase {
+                            img.resizable().scaledToFill()
+                        } else {
+                            Circle().fill(.secondary.opacity(0.3))
+                        }
+                    }
+                    .frame(width: 120, height: 120)
+                    .clipShape(Circle())
+                    .overlay(Circle().strokeBorder(.white.opacity(0.8), lineWidth: 2))
+                } else {
+                    Circle()
+                        .fill(.secondary.opacity(0.3))
+                        .frame(width: 120, height: 120)
+                }
+            }
+
+            VStack(spacing: 4) {
+                Text(node.name)
+                    .font(.title2.bold())
+
+                if let track = player.currentTrackName {
+                    Text(track)
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                } else {
+                    Text("Loading preview…")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                }
+            }
+
+            Button(action: onContinue) {
+                Text("Continue")
+                    .font(.subheadline.bold())
+                    .padding(.horizontal, 24)
+                    .padding(.vertical, 10)
+                    .background(.ultraThinMaterial, in: Capsule())
+                    .overlay(Capsule().strokeBorder(Color.secondary.opacity(0.3), lineWidth: 1))
+            }
+            .padding(.top, 6)
+        }
+        .padding(28)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .contentShape(Rectangle())
+        .onTapGesture { onContinue() }
+        .transition(.opacity)
+        .task(id: node.id) {
+            await player.play(artistID: node.id, artistName: node.name, imageURL: node.imageURL)
+        }
+        .task(id: node.id) {
+            try? await Task.sleep(for: .seconds(3.5))
+            onContinue()
+        }
     }
 }
