@@ -25,6 +25,16 @@ struct GraphEdge: Equatable {
 class ForceSimulation: ObservableObject {
     @Published var nodes: [GraphNode] = []
     @Published var pendingReviewIDs: [String] = []
+
+    // Set to the seed's id at the end of every load() call — gives the UI a
+    // beat to confirm "this is who you searched" (preview + settle) before
+    // the triage queue (built from the seed's *neighbors*, never the seed
+    // itself) takes over. Cleared by the view once that beat is done.
+    @Published var seedConfirmationID: String? = nil
+
+    func confirmSeed() {
+        seedConfirmationID = nil
+    }
     var edges: [GraphEdge] = []
 
     // id -> node, kept in sync with every `nodes` mutation below. Lets
@@ -43,6 +53,20 @@ class ForceSimulation: ObservableObject {
 
     private var timer: Timer?
     private var expandedIDs: Set<String> = []
+
+    // How many distinct galaxies (seed searches) have been assigned a hue
+    // this session — feeds hueForGalaxy(_:) below. Reset to 0 on a true
+    // "New Galaxy" restart in load(); left alone across "Add to
+    // Constellation" appends so each additional seed gets a genuinely new,
+    // well-separated color instead of recycling the first one.
+    private var galaxyHueCount: Int = 0
+
+    // Golden-ratio hue stepping: successive galaxies land far apart on the
+    // color wheel regardless of how many there end up being, rather than
+    // needing a fixed palette sized in advance.
+    static func hueForGalaxy(_ index: Int) -> Double {
+        (Double(index) * 0.6180339887).truncatingRemainder(dividingBy: 1.0)
+    }
 
     // artistID -> that artist's similarArtists ID set. Populated as nodes
     // get expanded, reused to backfill Jaccard scores without re-fetching.
@@ -134,7 +158,15 @@ class ForceSimulation: ObservableObject {
             expandedIDs = []
             similarArtistsCache = [:]
             pendingReviewIDs = []
+            galaxyHueCount = 0
         }
+
+        // One hue per load() call — every node this call creates (the seed
+        // plus its 1-hop neighbors) belongs to the same new galaxy. Nodes
+        // that already exist (skipped below) keep whatever hue they were
+        // first assigned, so appending never recolors an earlier galaxy.
+        let hue = Self.hueForGalaxy(galaxyHueCount)
+        galaxyHueCount += 1
 
         let nodeList = Array(store.nodes.values)
 
@@ -169,6 +201,7 @@ class ForceSimulation: ObservableObject {
                 depth: isSeed ? 0 : 1
             )
             node.isPinned = isSeed && !append
+            node.galaxyHue = hue
             nodes.append(node)
             nodesByID[node.id] = node
 
@@ -198,6 +231,7 @@ class ForceSimulation: ObservableObject {
             if let seedNode = nodeList.first(where: { $0.id == seed }) {
                 similarArtistsCache[seed.rawValue] = Set(seedNode.connections.map(\.rawValue))
             }
+            seedConfirmationID = seed.rawValue
         }
 
         start(center: center)
@@ -280,6 +314,10 @@ class ForceSimulation: ObservableObject {
                         position: pos,
                         depth: tappedNode.depth + 1
                     )
+                    // Inherit the parent's galaxy color rather than assigning
+                    // a new one — this is what makes the glow read as "grew
+                    // from this seed" all the way down the tree.
+                    newNode.galaxyHue = tappedNode.galaxyHue
 
                     nodes.append(newNode)
                     nodesByID[newNode.id] = newNode
@@ -299,6 +337,18 @@ class ForceSimulation: ObservableObject {
     // Removes a node the user discarded from listen mode — deletes it, any
     // edges touching it, and clears it from caches/queues. Equivalent to a
     // `filter(id != discarded_id)` pass across every table that references it.
+    //
+    // KNOWN GAP (flagged 7/22, not yet addressed): this does not cascade to
+    // nodes that this removal orphans elsewhere in the graph. Concretely —
+    // expand past node A into B and C, discard A afterward, and B/C lose
+    // their only edge back to the constellation. They aren't deleted, just
+    // left with zero edges, drifting on repulsion/center-gravity alone.
+    // Doesn't affect the seed itself (seedArtistID is structurally excluded
+    // from pendingReviewIDs in both load() and expand(), so it can never
+    // reach this function via a Discard tap) — this is purely a
+    // deeper-in-the-tree orphaning case. Options when this gets picked up:
+    // leave it (current behavior), warn before a discard that would orphan
+    // descendants, or cascade-remove the orphaned subtree. Undecided.
     func removeNode(id: String) {
         nodes.removeAll { $0.id == id }
         nodesByID.removeValue(forKey: id)

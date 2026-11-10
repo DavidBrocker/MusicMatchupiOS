@@ -17,7 +17,16 @@ class GraphNode: ObservableObject, Identifiable {
     var isPinned: Bool = false
     var depth: Int
     var isExpanded: Bool = false
-    
+
+    // Which "galaxy" (seed search) this node traces back to, expressed as a
+    // hue (0...1) rather than a fixed Color so the render side can vary
+    // saturation/brightness (dimming, selection) without losing the identity
+    // color. Set post-init by ForceSimulation — a fresh hue for a new seed
+    // in load(), inherited from the tapped node for anything spawned via
+    // expand() — same idea as `depth`, just propagated down the tree instead
+    // of incremented.
+    var galaxyHue: Double = 0
+
     init(id: String, name: String, imageURL: URL?, position: CGPoint, depth: Int = 0) {
         self.id = id
         self.name = name
